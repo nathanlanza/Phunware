@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		802B260D143A3E1FD5376F87 /* Pods_Phunware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B8341C229629282EFA0312 /* Pods_Phunware.framework */; };
+		B35512121E494AF100BC0A0D /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512111E494AF100BC0A0D /* Thing.swift */; };
+		B35512141E49553300BC0A0D /* ThingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512131E49553300BC0A0D /* ThingCell.swift */; };
 		B3DC65801E49374500970EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC657F1E49374500970EAC /* AppDelegate.swift */; };
-		B3DC65821E49374500970EAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC65811E49374500970EAC /* ViewController.swift */; };
-		B3DC65851E49374500970EAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DC65831E49374500970EAC /* Main.storyboard */; };
+		B3DC65821E49374500970EAC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC65811E49374500970EAC /* MainViewController.swift */; };
 		B3DC65871E49374500970EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DC65861E49374500970EAC /* Assets.xcassets */; };
 		B3DC658A1E49374500970EAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DC65881E49374500970EAC /* LaunchScreen.storyboard */; };
+		B3DC65931E4945D900970EAC /* Phunware.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC65921E4945D900970EAC /* Phunware.swift */; };
+		BD9FE26A4A1D6B03B49154B6 /* Pods_Phunware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2CB7EC6992D3D0BB294A788 /* Pods_Phunware.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B1EC45E2EE0FA15A41F7D1E /* Pods-Phunware.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.debug.xcconfig"; sourceTree = "<group>"; };
+		B35512111E494AF100BC0A0D /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		B35512131E49553300BC0A0D /* ThingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingCell.swift; sourceTree = "<group>"; };
 		B3DC657C1E49374500970EAC /* Phunware.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phunware.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3DC657F1E49374500970EAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3DC65811E49374500970EAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B3DC65841E49374500970EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3DC65811E49374500970EAC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B3DC65861E49374500970EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3DC65891E49374500970EAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3DC658B1E49374500970EAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3DC65921E4945D900970EAC /* Phunware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phunware.swift; sourceTree = "<group>"; };
+		B4695161739C440E0476AF94 /* Pods-Phunware.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.release.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.release.xcconfig"; sourceTree = "<group>"; };
+		CD3221C4F2CC1692605ED85A /* Pods-Phunware.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.debug.xcconfig"; sourceTree = "<group>"; };
+		E2CB7EC6992D3D0BB294A788 /* Pods_Phunware.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Phunware.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7B8341C229629282EFA0312 /* Pods_Phunware.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Phunware.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB1EB98DA19C098243D1235C /* Pods-Phunware.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.release.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9FE26A4A1D6B03B49154B6 /* Pods_Phunware.framework in Frameworks */,
+				802B260D143A3E1FD5376F87 /* Pods_Phunware.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E656E2090E4C8CAC9F6D2B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7B8341C229629282EFA0312 /* Pods_Phunware.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8A10E4EC7EA690D193AA576 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB7EC6992D3D0BB294A788 /* Pods_Phunware.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		B3DC65731E49374400970EAC = {
 			isa = PBXGroup;
 			children = (
 				B3DC657E1E49374500970EAC /* Phunware */,
-				B3DC657D1E49374500970EAC /* Products */,
+				B3DC65911E493C2E00970EAC /* Other */,
+				E42546E2D9250C8959510BE5 /* Pods */,
+				4E656E2090E4C8CAC9F6D2B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,19 +82,52 @@
 				B3DC657C1E49374500970EAC /* Phunware.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B3DC657E1E49374500970EAC /* Phunware */ = {
 			isa = PBXGroup;
 			children = (
 				B3DC657F1E49374500970EAC /* AppDelegate.swift */,
-				B3DC65811E49374500970EAC /* ViewController.swift */,
-				B3DC65831E49374500970EAC /* Main.storyboard */,
+				B3DC65811E49374500970EAC /* MainViewController.swift */,
+				B35512131E49553300BC0A0D /* ThingCell.swift */,
+				B35512111E494AF100BC0A0D /* Thing.swift */,
+				B3DC65921E4945D900970EAC /* Phunware.swift */,
+			);
+			path = Phunware;
+			sourceTree = "<group>";
+		};
+		B3DC65911E493C2E00970EAC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC657D1E49374500970EAC /* Products */,
+				B52CE211D22AE2025452DD15 /* Pods */,
+				A8A10E4EC7EA690D193AA576 /* Frameworks */,
 				B3DC65861E49374500970EAC /* Assets.xcassets */,
 				B3DC65881E49374500970EAC /* LaunchScreen.storyboard */,
 				B3DC658B1E49374500970EAC /* Info.plist */,
 			);
+			name = Other;
 			path = Phunware;
+			sourceTree = "<group>";
+		};
+		B52CE211D22AE2025452DD15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CD3221C4F2CC1692605ED85A /* Pods-Phunware.debug.xcconfig */,
+				B4695161739C440E0476AF94 /* Pods-Phunware.release.xcconfig */,
+			);
+			name = Pods;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		E42546E2D9250C8959510BE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B1EC45E2EE0FA15A41F7D1E /* Pods-Phunware.debug.xcconfig */,
+				FB1EB98DA19C098243D1235C /* Pods-Phunware.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3DC658E1E49374500970EAC /* Build configuration list for PBXNativeTarget "Phunware" */;
 			buildPhases = (
+				2A8B53751A0B6AA394018A1E /* [CP] Check Pods Manifest.lock */,
 				B3DC65781E49374500970EAC /* Sources */,
 				B3DC65791E49374500970EAC /* Frameworks */,
 				B3DC657A1E49374500970EAC /* Resources */,
+				378158BCD03968635307B4B4 /* [CP] Embed Pods Frameworks */,
+				67239E78102337BD05CE54C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,18 +195,68 @@
 			files = (
 				B3DC658A1E49374500970EAC /* LaunchScreen.storyboard in Resources */,
 				B3DC65871E49374500970EAC /* Assets.xcassets in Resources */,
-				B3DC65851E49374500970EAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A8B53751A0B6AA394018A1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		378158BCD03968635307B4B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Phunware/Pods-Phunware-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67239E78102337BD05CE54C3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Phunware/Pods-Phunware-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B3DC65781E49374500970EAC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3DC65821E49374500970EAC /* ViewController.swift in Sources */,
+				B35512121E494AF100BC0A0D /* Thing.swift in Sources */,
+				B3DC65821E49374500970EAC /* MainViewController.swift in Sources */,
+				B3DC65931E4945D900970EAC /* Phunware.swift in Sources */,
+				B35512141E49553300BC0A0D /* ThingCell.swift in Sources */,
 				B3DC65801E49374500970EAC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,14 +264,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B3DC65831E49374500970EAC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3DC65841E49374500970EAC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B3DC65881E49374500970EAC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -259,6 +370,7 @@
 		};
 		B3DC658F1E49374500970EAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD3221C4F2CC1692605ED85A /* Pods-Phunware.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 72MNHNDUNH;
@@ -272,6 +384,7 @@
 		};
 		B3DC65901E49374500970EAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4695161739C440E0476AF94 /* Pods-Phunware.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 72MNHNDUNH;
@@ -302,6 +415,7 @@
 				B3DC65901E49374500970EAC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
