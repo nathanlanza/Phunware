@@ -3,64 +3,187 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import Moya
+import AlamofireImage
 
-class MainViewController: CollectionViewController<ThingCell> {
-    
-    let provider = RxMoyaProvider<Phunware>()
-    
-    override func setupLayout() {
-        super.setupLayout()
-        layout.itemSize = CGSize(width: view.frame.width, height: 120)
-    }
-    override func setupRx() {
-        super.setupRx()
-        getThings().bindTo(collectionView!.rx.items(cellIdentifier: "cell", cellType: ThingCell.self)) { index, thing, cell in
-            cell.configure(for: thing)
-            }.addDisposableTo(db)
-        collectionView!.rx.modelSelected(Thing.self).subscribe(onNext: { thing in
-            let dvc = DetailViewController()
-            dvc.thing = thing
-            dvc.useLayoutToLayoutNavigationTransitions = true
-            self.show(dvc, sender: self)
-        }).addDisposableTo(db)
-    }
-    
-    func getThings() -> Observable<[Thing]> {
-        return provider.request(.starWars).mapJSON().map(Thing.from)
-    }
+protocol Reusable {}
+extension Reusable {
+  static var reuseIdentifier: String { return String(describing: self) }
 }
-class CollectionViewController<Cell: UICollectionViewCell>: UICollectionViewController {
-    var layout: UICollectionViewFlowLayout { return collectionViewLayout as! UICollectionViewFlowLayout }
-    func setupLayout() {
+extension UICollectionViewCell: Reusable {}
 
-    }
-    func setupRx() {
-        collectionView?.delegate = nil
-        collectionView?.dataSource = nil
-        collectionView!.register(Cell.self, forCellWithReuseIdentifier: "cell")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupLayout()
-        setupRx()
-    }
-    let db = DisposeBag()
+extension UICollectionView {
+  func register<T: UICollectionViewCell>(_ cellClass: T.Type) where T: Reusable {
+    register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
+  }
+}
+extension UICollectionView {
+  func dequeueReusableCell<T: UICollectionViewCell>(for indexPath: IndexPath) -> T where T: Reusable {
+    return dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
+  }
+}
+extension Reactive where Base: UICollectionView {
+  func items<S: Sequence, Cell: UICollectionViewCell, O : ObservableType>
+    (cellType: Cell.Type = Cell.self)
+    -> (_ source: O)
+    -> (_ configureCell: @escaping (Int, S.Iterator.Element, Cell) -> Void)
+    -> Disposable
+    where O.E == S, Cell: Reusable {
+      return items(cellIdentifier: cellType.reuseIdentifier, cellType: cellType)
+  }
 }
 
 
-class DetailViewController: CollectionViewController<UICollectionViewCell> {
-    var thing: Thing!
-    override func setupLayout() {
-        super.setupLayout()
-        layout.itemSize = CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    override func setupRx() {
-        super.setupRx()
-        Observable.just([thing]).bindTo(collectionView!.rx.items(cellIdentifier: "cell", cellType: UICollectionViewCell.self)) { index, thing, cell in
-            cell.backgroundColor = .red
-        }.addDisposableTo(db)
-    }
 
+class MainViewController: UIViewController {
+  
+  var layout: UICollectionViewFlowLayout { return collectionView.collectionViewLayout as! UICollectionViewFlowLayout }
+  @IBOutlet var collectionView: UICollectionView!
+  let provider = RxMoyaProvider<Phunware>()
+  
+  func setupLayout() {
+    layout.itemSize = CGSize(width: view.frame.width, height: 120)
+  }
+  
+  let things = Variable<[Thing]>([])
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupLayout()
+    RxMoyaProvider<Phunware>().request(.starWars).mapJSON().map(Thing.from).subscribe(onNext: { self.things.value = $0 }).addDisposableTo(db)
+    collectionView!.backgroundColor = .white
+    view.backgroundColor = .white
+    
+    setupRx()
+  }
+  
+  func setupRx() {
+    
+    things.asObservable().bindTo(collectionView!.rx.items(cellType: ThingCell.self)) { index, thing, cell in
+      cell.configure(for: thing)
+      print("hi")
+      }.addDisposableTo(db)
+//    collectionView!.rx.itemSelected.subscribe(onNext: { indexPath in
+//      let thing = self.things.value[indexPath.row]
+//      let dvc = DetailViewController()
+//      dvc.thing = thing
+//      let cell = self.collectionView?.cellForItem(at: indexPath) as! ThingCell
+//      dvc.imageView.image = cell.imageView.image
+//      self.show(dvc, sender: cell)
+//    }).addDisposableTo(db)
+  }
+  let db = DisposeBag()
 }
+
+
+class DetailViewController: UIViewController {
+  var thing: Thing! {
+    didSet {
+      dateLabel.text = thing.date
+      locationLabel.text = thing.locationline2 + ", " + thing.locationline1
+      descriptionLabel.text = thing.description
+      titleLabel.text = thing.title
+    }
+  }
+  
+  let dateLabel: UILabel = {
+    let l = UILabel()
+    l.font = UIFont.systemFont(ofSize: 9)
+    l.heroID = "date"
+    l.heroModifiers = [.zPosition(4)]
+    return l
+  }()
+  let titleLabel: UILabel = {
+    let l = UILabel()
+    l.font = UIFont.systemFont(ofSize: 9)
+    l.heroID = "title"
+    l.heroModifiers = [.zPosition(4)]
+    return l
+  }()
+  let locationLabel: UILabel = {
+    let l = UILabel()
+    l.font = UIFont.systemFont(ofSize: 9)
+    l.heroID = "location"
+    l.heroModifiers = [.zPosition(4)]
+    return l
+  }()
+  
+  let descriptionLabel: UILabel = {
+    let l = UILabel()
+    l.font = UIFont.systemFont(ofSize: 9)
+    l.numberOfLines = 0
+    l.heroID = "description"
+    l.heroModifiers = [.zPosition(4)]
+    return l
+  }()
+  
+  let imageView: UIImageView = {
+    let i = UIImageView()
+    i.heroID = "image"
+    i.heroModifiers = [.zPosition(2)]
+    return i
+  }()
+  
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    view.backgroundColor = .white
+    
+    [imageView, dateLabel,titleLabel,locationLabel,descriptionLabel].forEach { view.addSubview($0) }
+    
+    imageView.snp.makeConstraints { make in
+      make.top.equalTo(view).offset(10)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(10)
+    }
+    dateLabel.snp.makeConstraints { make in
+      make.top.equalTo(imageView.snp.bottom).offset(10)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(10)
+    }
+    titleLabel.snp.makeConstraints { make in
+      make.top.equalTo(dateLabel.snp.bottom).offset(10)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(10)
+    }
+    descriptionLabel.snp.makeConstraints { make in
+      make.top.equalTo(titleLabel.snp.bottom).offset(10)
+      make.left.equalToSuperview().offset(10)
+      make.right.equalToSuperview().offset(10)
+    }
+    isHeroEnabled = true
+  }
+  
+  required init?(coder aDecoder: NSCoder) { fatalError() }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

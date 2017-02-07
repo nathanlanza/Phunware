@@ -11,7 +11,10 @@ target 'Phunware' do
 
   pod 'Moya'
   pod 'Alamofire'
+  pod 'AlamofireImage'
 
   pod 'Moya/RxSwift'
+
+  pod 'Hero'
 
 end

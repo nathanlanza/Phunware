@@ -19,7 +19,6 @@ struct Thing {
         date = dict["date"] as? String ?? "none"
         locationline1 = dict["locationline1"] as? String ?? "none"
         locationline2 = dict["locationline2"] as? String ?? "none"
-        print(self)
     }
     
     static func from(_ json: Any) -> [Thing] {

@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Hero.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Moya.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,17 +52,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>27C631A8735E1379F38E5585ABB07E41</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2A6D0851BA24DD25864CB23A3A83B9CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7AC75C50D8EB9B9FF08D897770AC6FF2</key>
+		<key>65826BC6522A483C7360D5A71AEE110F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,17 +67,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8E862E1BD8034BB2692ABD729E403952</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B718C58907C22E03009A5703D5C847C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C419A9BCC9AACDC44A26B80764B6B554</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFDB85DF4827734B35E8A46720ACAEE0</key>
+		<key>CBC08580AE5A802626154E0BCABF642B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FA127968DB59CF29305DAC92053109D3</key>
+		<key>EFDB85DF4827734B35E8A46720ACAEE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		802B260D143A3E1FD5376F87 /* Pods_Phunware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B8341C229629282EFA0312 /* Pods_Phunware.framework */; };
+		B33A32DA1E49E5E500F2B678 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B33A32D91E49E5E500F2B678 /* Main.storyboard */; };
 		B35512121E494AF100BC0A0D /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512111E494AF100BC0A0D /* Thing.swift */; };
 		B35512141E49553300BC0A0D /* ThingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512131E49553300BC0A0D /* ThingCell.swift */; };
 		B3DC65801E49374500970EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC657F1E49374500970EAC /* AppDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		7B1EC45E2EE0FA15A41F7D1E /* Pods-Phunware.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.debug.xcconfig"; sourceTree = "<group>"; };
+		B33A32D91E49E5E500F2B678 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B35512111E494AF100BC0A0D /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		B35512131E49553300BC0A0D /* ThingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingCell.swift; sourceTree = "<group>"; };
 		B3DC657C1E49374500970EAC /* Phunware.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phunware.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 				B3DC657F1E49374500970EAC /* AppDelegate.swift */,
 				B3DC65811E49374500970EAC /* MainViewController.swift */,
 				B35512131E49553300BC0A0D /* ThingCell.swift */,
+				B33A32D91E49E5E500F2B678 /* Main.storyboard */,
 				B35512111E494AF100BC0A0D /* Thing.swift */,
 				B3DC65921E4945D900970EAC /* Phunware.swift */,
 			);
@@ -193,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33A32DA1E49E5E500F2B678 /* Main.storyboard in Resources */,
 				B3DC658A1E49374500970EAC /* LaunchScreen.storyboard in Resources */,
 				B3DC65871E49374500970EAC /* Assets.xcassets in Resources */,
 			);
