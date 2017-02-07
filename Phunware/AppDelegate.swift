@@ -8,6 +8,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
+//    HeroDebugPlugin.isEnabled = true
+    
     window = UIWindow()
     let m = MainViewController()
     m.title = "PHUN APP"

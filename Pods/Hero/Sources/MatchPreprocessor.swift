@@ -22,26 +22,37 @@
 
 import UIKit
 
-public class MatchPreprocessor:BasePreprocessor {
-  override public func process(fromViews:[UIView], toViews:[UIView]) {
-    for tv in toViews{
+class MatchPreprocessor: BasePreprocessor {
+  override func process(fromViews: [UIView], toViews: [UIView]) {
+    for tv in toViews {
       guard let id = tv.heroID, let fv = context.sourceView(for: id) else { continue }
 
       var tvState = context[tv] ?? HeroTargetState()
-      if let zPosition = tvState.zPositionIfMatched {
-        tvState.zPosition = zPosition
-      }
-      tvState.source = id
+      var fvState = context[fv] ?? HeroTargetState()
 
-      var fvState = tvState
+      tvState.source = id
+      fvState.source = id
+
+      fvState.arc = tvState.arc
+      fvState.duration = tvState.duration
+      fvState.timingFunction = tvState.timingFunction
+      fvState.delay = tvState.delay
+      fvState.spring = tvState.spring
 
       tvState.opacity = 0
-      if (fv is UILabel && !fv.isOpaque) || tv.alpha < 1 {
-        // cross fade if fromView is a label or if toView is transparent
+      if !fv.isOpaque || tv.alpha < 1 {
+        // cross fade if fromView is not opaque or if toView is transparent
         fvState.opacity = 0
       } else {
+        // no cross fade in this case, fromView is always displayed during the transition.
         fvState.opacity = nil
+
+        // we dont want two shadows showing up. Therefore we disable toView's shadow when fromView is able to display its shadow
+        if !fv.layer.masksToBounds && fvState.displayShadow {
+          tvState.displayShadow = false
+        }
       }
+
       context[tv] = tvState
       context[fv] = fvState
     }

@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (4.2.0)
+  - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
-  - Hero (0.1.2)
-  - Moya (8.0.1):
-    - Moya/Core (= 8.0.1)
-  - Moya/Core (8.0.1):
-    - Alamofire (~> 4.2.0)
-    - Result (~> 3.1.0)
-  - Moya/RxSwift (8.0.1):
+  - Hero (0.1.9)
+  - Moya (8.0.2):
+    - Moya/Core (= 8.0.2)
+  - Moya/Core (8.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (8.0.2):
     - Moya/Core
-    - RxSwift (~> 3.1.0)
+    - RxSwift (~> 3.0)
   - Result (3.1.0)
   - RxCocoa (3.2.0):
     - RxSwift (~> 3.1)
-  - RxSwift (3.1.0)
+  - RxSwift (3.2.0)
   - SnapKit (3.1.2)
 
 DEPENDENCIES:
@@ -28,13 +28,13 @@ DEPENDENCIES:
   - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  Hero: 1465b8e2ca4224620d17d09044728dbbe5c08b7a
-  Moya: f2e10a04fcb27fec154cb2afa4e536e8b46dac04
+  Hero: 21963b51b85d22c1cb98e0042d0653c839056c7b
+  Moya: 47f61da5b634aa71f676431b64ee0f81e976296d
   Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
   RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
-  RxSwift: 83ff553e7593fdfdcb2562933a64c0284dffdadc
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
 
 PODFILE CHECKSUM: cdf91f48d83e6534f26c256caafb6895ba8ea9cc

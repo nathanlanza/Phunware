@@ -1,4 +1,4 @@
-<img src="https://github.com/lkzhao/Hero/blob/master/Resources/HeroLogo@2x.png?raw=true" width="388"/>
+<img src="https://cdn.rawgit.com/lkzhao/Hero/bff6d87907006d1847ed0b7121e9fb4ac4d68320/Resources/Hero.svg" width="388"/>
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/Hero.svg?style=flat)](http://cocoapods.org/pods/Hero)
@@ -14,8 +14,8 @@
 **Hero** is a library for building iOS view controller transitions. It provides a layer on top of the UIKit's cumbersome transition APIs. Making custom transitions an easy task for developers.
 
 ### Features
-<img src="https://cdn.rawgit.com/lkzhao/Hero/e6c77629fcf2ea1c9b8526f74d250a2fea68ae5c/Resources/basic.svg"/>
-<img src="https://cdn.rawgit.com/lkzhao/Hero/b8f01051e9e8ce0cdc8eb7888c6d7ffa2344d96a/Resources/effects.svg"/>
+<img src="https://cdn.rawgit.com/lkzhao/Hero/f6e87630249bf398cbc138c16eb9e4e3a301cace/Resources/basic.svg"/>
+<img src="https://cdn.rawgit.com/lkzhao/Hero/f6e87630249bf398cbc138c16eb9e4e3a301cace/Resources/effects.svg"/>
 
 #### With Hero, you can easily mix & match these effects to build your own custom transition.
 
@@ -27,16 +27,9 @@ By default, Hero provides **dynamic duration & easing** based on the [Material D
 
 Hero does not make any assumption about how the view is built or structured. It will not modify any of your views' states other than hiding them during the animation. This means that it works with **Auto Layout**, **programmatic layout**, **UICollectionView** (without modifying its layout object), **UITableView**, **UINavigationController**, **UITabBarController**, etc... 
 
-## Video Demos
-The following videos give you a general idea of what you can do with **Hero**
+## Example Gallery
 
-1. Video overview of the **example project**.
-2. Video overview of the **built-in debugger** that display timeline, arc curve, and 3d informations.
-3. Video overview of the usage with [Injection App](http://johnholdsworth.com/injection.html) to provide **dynamic modifications** in realtime. Changing `HeroID` or `HeroModifiers` **without** recompiling!
-
-<a href="https://youtu.be/-6L79or6Iq8"><img src="https://github.com/lkzhao/Hero/blob/master/Resources/overview.png?raw=true" height="300"/></a>
-<a href="https://youtu.be/NFhA6qZdunA"><img src="https://github.com/lkzhao/Hero/blob/master/Resources/debugger.png?raw=true" height="300"/></a>
-<a href="https://youtu.be/m8eeO_GETeA"><img src="https://github.com/lkzhao/Hero/blob/master/Resources/liveInjection.png?raw=true" height="300"/></a>
+Checkout the [example gallery blog post](http://lkzhao.com/2016/12/28/hero.html) for a general idea of what you can achieve with **Hero**
 
 ## Usage Example 1
 
@@ -60,7 +53,7 @@ greenView.heroModifiers = [.translate(x:0, y:100), .scale(0.5)]
 
 
 ## Usage Example 2
-<img src="https://cdn.rawgit.com/lkzhao/Hero/e4b0d15a15d738ac4b163797816059c199100e22/Resources/advance-v1.svg" />
+<img src="https://cdn.rawgit.com/lkzhao/Hero/ecec15de7747d9541db9af62e4001da6bf0b3896/Resources/advance-v1.svg" />
 <img src="https://cdn.rawgit.com/lkzhao/Hero/e4b0d15a15d738ac4b163797816059c199100e22/Resources/advance-v2.svg" />
 <img src="https://cdn.rawgit.com/lkzhao/Hero/e4b0d15a15d738ac4b163797816059c199100e22/Resources/advance-animation.svg" />
 
@@ -99,14 +92,23 @@ You can do these in the **storyboard** too!
 * [Modifiers](https://github.com/lkzhao/Hero/wiki/Usage-Guide#modifiers)
 	* [Basic Modifiers](https://github.com/lkzhao/Hero/wiki/Usage-Guide#basic-modifiers)
 	* [Advance Modifiers](https://github.com/lkzhao/Hero/wiki/Usage-Guide#advance-modifiers)
-	* [zPosition](https://github.com/lkzhao/Hero/wiki/Usage-Guide#zposition-modifier)
 	* [Arc](https://github.com/lkzhao/Hero/wiki/Usage-Guide#arc-modifier)
 	* [Source](https://github.com/lkzhao/Hero/wiki/Usage-Guide#source-modifier)
 	* [Cascade](https://github.com/lkzhao/Hero/wiki/Usage-Guide#cascade-modifier)
 	* [IgnoreSubviewModifiers](https://github.com/lkzhao/Hero/wiki/Usage-Guide#ignoresubviewmodifiers-modifier)
+	* [UseScaleBasedSizeChange](https://github.com/lkzhao/Hero/wiki/Usage-Guide#usescalebasedsizechange-modifier)
+* [Coordinate Space](https://github.com/lkzhao/Hero/wiki/Usage-Guide#coordinate-space)
+	* [Global](https://github.com/lkzhao/Hero/wiki/Usage-Guide#global-coordinate-space-default-before-013)
+	* [Local](https://github.com/lkzhao/Hero/wiki/Usage-Guide#local-coordinate-space-default-after-013)
+* [Snapshot Types](https://github.com/lkzhao/Hero/wiki/Usage-Guide#snapshot-types)
+* [Navigation Helpers (dismiss, replace, unwind)](https://github.com/lkzhao/Hero/wiki/Usage-Guide#navigation-helpers-dismiss-replace-unwind)
 * [UINavigationController & UITabBarController](https://github.com/lkzhao/Hero/wiki/Usage-Guide#uinavigationcontroller--uitabbarcontroller)
 
 ##### NOTE: Hero won't work on iPhone 7 Simulators due to a [bug](https://forums.developer.apple.com/thread/63438) by Apple. Try using other simulators or a real device when working with Hero.
+
+## Interactive Transition Tutorials
+
+[Interactive transitions with Hero (Part 1)](http://lkzhao.com/2017/02/05/hero-interactive-transition.html)
 
 ## Contribute
 

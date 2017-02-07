@@ -30,7 +30,7 @@ protocol HeroDebugViewDelegate {
   func onDone()
 }
 
-public class HeroDebugView: UIView {
+class HeroDebugView: UIView {
   var backgroundView: UIView!
   var debugSlider: UISlider!
   var perspectiveButton: UIButton!
@@ -47,15 +47,15 @@ public class HeroDebugView: UIView {
     }
   }
   
-  var showOnTop:Bool = false
-  var rotation:CGFloat = CGFloat(M_PI / 6)
-  var scale:CGFloat = 0.6
-  var translation:CGPoint = .zero
-  var progress:Float{
+  var showOnTop: Bool = false
+  var rotation: CGFloat = CGFloat(M_PI / 6)
+  var scale: CGFloat = 0.6
+  var translation: CGPoint = .zero
+  var progress: Float {
     return debugSlider.value
   }
   
-  init(initialProcess:Float, showCurveButton:Bool, showOnTop:Bool) {
+  init(initialProcess: Float, showCurveButton: Bool, showOnTop: Bool) {
     super.init(frame:.zero)
     self.showOnTop = showOnTop
     backgroundView = UIView(frame:.zero)

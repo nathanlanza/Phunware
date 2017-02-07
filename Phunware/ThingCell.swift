@@ -7,22 +7,19 @@ class ThingCell: UICollectionViewCell {
   let dateLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
-    l.heroID = "date"
-    l.heroModifiers = [.zPosition(4)]
+//    l.heroID = "date"
     return l
   }()
   let titleLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
-    l.heroID = "title"
-    l.heroModifiers = [.zPosition(4)]
+//    l.heroID = "title"
     return l
   }()
   let locationLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
-    l.heroID = "location"
-    l.heroModifiers = [.zPosition(4)]
+//    l.heroID = "location"
     return l
   }()
   
@@ -30,15 +27,13 @@ class ThingCell: UICollectionViewCell {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
     l.numberOfLines = 0
-    l.heroID = "description"
-    l.heroModifiers = [.zPosition(4)]
+//    l.heroID = "description"
     return l
   }()
   
   let imageView: UIImageView = {
     let i = UIImageView()
-    i.heroID = "image"
-    i.heroModifiers = [.zPosition(2)]
+//    i.heroID = "image"
     return i
   }()
   

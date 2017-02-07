@@ -78,6 +78,13 @@ class MainViewController: UIViewController {
       dvc.thing = thing
       let cell = self.collectionView?.cellForItem(at: indexPath) as! ThingCell
       dvc.imageView.image = cell.imageView.image
+      
+      cell.dateLabel.heroID = "date"
+      cell.titleLabel.heroID = "title"
+      cell.locationLabel.heroID = "location"
+      cell.descriptionLabel.heroID = "description"
+      cell.imageView.heroID = "image"
+      
       self.show(dvc, sender: cell)
     }).addDisposableTo(db)
   }
@@ -87,7 +94,7 @@ class MainViewController: UIViewController {
 }
 
 
-class DetailViewController2: UIViewController {
+class DetailViewController: UIViewController {
   var thing: Thing! {
     didSet {
       dateLabel.text = thing.date
@@ -101,21 +108,18 @@ class DetailViewController2: UIViewController {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
     l.heroID = "date"
-    l.heroModifiers = [.zPosition(4)]
     return l
   }()
   let titleLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
     l.heroID = "title"
-    l.heroModifiers = [.zPosition(4)]
     return l
   }()
   let locationLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
     l.heroID = "location"
-    l.heroModifiers = [.zPosition(4)]
     return l
   }()
   
@@ -124,14 +128,12 @@ class DetailViewController2: UIViewController {
     l.font = UIFont.systemFont(ofSize: 9)
     l.numberOfLines = 0
     l.heroID = "description"
-    l.heroModifiers = [.zPosition(4)]
     return l
   }()
   
   let imageView: UIImageView = {
     let i = UIImageView()
     i.heroID = "image"
-    i.heroModifiers = [.zPosition(2)]
     return i
   }()
   
@@ -168,19 +170,6 @@ class DetailViewController2: UIViewController {
   required init?(coder aDecoder: NSCoder) { fatalError() }
 }
 
-
-
-class DetailViewController: UIViewController {
-  var thing: Thing!
-  
-  @IBOutlet weak var imageView: UIImageView!
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    imageView.heroID = "imageView"
-  }
-}
 
 
 

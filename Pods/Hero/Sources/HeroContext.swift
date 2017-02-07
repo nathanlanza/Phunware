@@ -23,16 +23,19 @@
 import UIKit
 
 public class HeroContext {
-  fileprivate var heroIDToSourceView = [String: UIView]()
-  fileprivate var heroIDToDestinationView = [String: UIView]()
-  fileprivate var snapshotViews = [UIView: UIView]()
-  fileprivate var viewAlphas = [UIView: CGFloat]()
-  fileprivate var targetStates = [UIView: HeroTargetState]()
+  internal var heroIDToSourceView = [String: UIView]()
+  internal var heroIDToDestinationView = [String: UIView]()
+  internal var snapshotViews = [UIView: UIView]()
+  internal var viewAlphas = [UIView: CGFloat]()
+  internal var targetStates = [UIView: HeroTargetState]()
 
-  internal init(container: UIView, fromView: UIView, toView: UIView) {
+  internal init(container: UIView) {
+    self.container = container
+  }
+
+  internal func set(fromView:UIView, toView:UIView) {
     fromViews = HeroContext.processViewTree(view: fromView, container: container, idMap: &heroIDToSourceView, stateMap: &targetStates)
     toViews = HeroContext.processViewTree(view: toView, container: container, idMap: &heroIDToDestinationView, stateMap: &targetStates)
-    self.container = container
   }
 
   /**
@@ -43,12 +46,12 @@ public class HeroContext {
   /**
    A flattened list of all views from source ViewController
    */
-  public let fromViews: [UIView]
+  public var fromViews: [UIView]!
 
   /**
    A flattened list of all views from destination ViewController
    */
-  public let toViews: [UIView]
+  public var toViews: [UIView]!
 }
 
 // public
@@ -89,7 +92,18 @@ extension HeroContext {
     if let snapshot = snapshotViews[view] {
       return snapshot
     }
-
+    
+    var containerView = container
+    if targetStates[view]?.useGlobalCoordinateSpace != true {
+      containerView = view
+      while containerView != container, snapshotViews[containerView] == nil, let superview = containerView.superview {
+        containerView = superview
+      }
+      if let snapshot = snapshotViews[containerView] {
+        containerView = snapshot
+      }
+    }
+ 
     unhide(view: view)
 
     // capture a snapshot without alpha & cornerRadius
@@ -97,54 +111,65 @@ extension HeroContext {
     let oldAlpha = view.alpha
     view.layer.cornerRadius = 0
     view.alpha = 1
+
     let snapshot: UIView
-    if #available(iOS 9.0, *), let stackView = view as? UIStackView {
-      snapshot = stackView.slowSnapshotView()
-    } else if let imageView = view as? UIImageView, view.subviews.isEmpty {
-      let contentView = UIImageView(image: imageView.image)
-      contentView.frame = imageView.bounds
-      contentView.contentMode = imageView.contentMode
-      contentView.tintColor = imageView.tintColor
-      contentView.backgroundColor = imageView.backgroundColor
-      let snapShotView = UIView()
-      snapShotView.addSubview(contentView)
-      snapshot = snapShotView
-    } else if let barView = view as? UINavigationBar, barView.isTranslucent {
-      let newBarView = UINavigationBar(frame: barView.frame)
-
-      newBarView.barStyle = barView.barStyle
-      newBarView.tintColor = barView.tintColor
-      newBarView.barTintColor = barView.barTintColor
-      newBarView.clipsToBounds = false
-
-      // take a snapshot without the background
-      barView.layer.sublayers![0].opacity = 0
-      let realSnapshot = barView.snapshotView(afterScreenUpdates: true)!
-      barView.layer.sublayers![0].opacity = 1
-
-      newBarView.addSubview(realSnapshot)
-      snapshot = newBarView
-    } else {
+    let snapshotType:HeroSnapshotType = self[view]?.snapshotType ?? .optimized
+    
+    switch snapshotType {
+    case .normal:
       snapshot = view.snapshotView(afterScreenUpdates: true)!
+    case .layerRender:
+      snapshot = view.slowSnapshotView()
+    case .noSnapshot:
+      snapshot = view
+    case .optimized:
+      if #available(iOS 9.0, *), let stackView = view as? UIStackView {
+        snapshot = stackView.slowSnapshotView()
+      } else if let imageView = view as? UIImageView, view.subviews.isEmpty {
+        let contentView = UIImageView(image: imageView.image)
+        contentView.frame = imageView.bounds
+        contentView.contentMode = imageView.contentMode
+        contentView.tintColor = imageView.tintColor
+        contentView.backgroundColor = imageView.backgroundColor
+        let snapShotView = UIView()
+        snapShotView.addSubview(contentView)
+        snapshot = snapShotView
+      } else if let barView = view as? UINavigationBar, barView.isTranslucent {
+        let newBarView = UINavigationBar(frame: barView.frame)
+        
+        newBarView.barStyle = barView.barStyle
+        newBarView.tintColor = barView.tintColor
+        newBarView.barTintColor = barView.barTintColor
+        newBarView.clipsToBounds = false
+        
+        // take a snapshot without the background
+        barView.layer.sublayers![0].opacity = 0
+        let realSnapshot = barView.snapshotView(afterScreenUpdates: true)!
+        barView.layer.sublayers![0].opacity = 1
+        
+        newBarView.addSubview(realSnapshot)
+        snapshot = newBarView
+      } else {
+        snapshot = view.snapshotView(afterScreenUpdates: true)!
+      }
     }
+
+    if snapshotType != .noSnapshot {
+      snapshot.layer.allowsGroupOpacity = false
+    }
+    
     view.layer.cornerRadius = oldCornerRadius
     view.alpha = oldAlpha
 
-    if !(view is UINavigationBar) {
+    if !(view is UINavigationBar), let contentView = snapshot.subviews.get(0) {
       // the Snapshot's contentView must have hold the cornerRadius value,
       // since the snapshot might not have maskToBounds set
-      let contentView = snapshot.subviews[0]
       contentView.layer.cornerRadius = view.layer.cornerRadius
       contentView.layer.masksToBounds = true
     }
 
     snapshot.layer.cornerRadius = view.layer.cornerRadius
-    if let zPosition = self[view]?.zPosition {
-      snapshot.layer.zPosition = zPosition
-    } else {
-      snapshot.layer.zPosition = view.layer.zPosition
-    }
-
+    snapshot.layer.zPosition = view.layer.zPosition
     snapshot.layer.opacity = view.layer.opacity
     snapshot.layer.isOpaque = view.layer.isOpaque
     snapshot.layer.anchorPoint = view.layer.anchorPoint
@@ -152,17 +177,24 @@ extension HeroContext {
     snapshot.layer.borderColor = view.layer.borderColor
     snapshot.layer.borderWidth = view.layer.borderWidth
     snapshot.layer.transform = view.layer.transform
-    snapshot.layer.shadowRadius = view.layer.shadowRadius
-    snapshot.layer.shadowOpacity = view.layer.shadowOpacity
-    snapshot.layer.shadowColor = view.layer.shadowColor
-    snapshot.layer.shadowOffset = view.layer.shadowOffset
 
-    snapshot.frame = container.convert(view.bounds, from: view)
+    if self[view]?.displayShadow ?? true {
+      snapshot.layer.shadowRadius = view.layer.shadowRadius
+      snapshot.layer.shadowOpacity = view.layer.shadowOpacity
+      snapshot.layer.shadowColor = view.layer.shadowColor
+      snapshot.layer.shadowOffset = view.layer.shadowOffset
+      snapshot.layer.shadowPath = view.layer.shadowPath
+    }
+
+    snapshot.frame = containerView.convert(view.bounds, from: view)
     snapshot.heroID = view.heroID
 
     hide(view: view)
 
-    container.addSubview(snapshot)
+    if let pairedView = pairedView(for: view), let pairdSnapshot = snapshotViews[pairedView] {
+      containerView.addSubview(pairdSnapshot)
+    }
+    containerView.addSubview(snapshot)
     snapshotViews[view] = snapshot
     return snapshot
   }
@@ -180,20 +212,25 @@ extension HeroContext {
 // internal
 extension HeroContext {
   public func hide(view: UIView) {
-    if viewAlphas[view] == nil {
-      viewAlphas[view] = view.alpha
+    if viewAlphas[view] == nil, self[view]?.snapshotType != .noSnapshot {
+      viewAlphas[view] = view.isOpaque ? .infinity : view.alpha
       view.alpha = 0
     }
   }
   public func unhide(view: UIView) {
     if let oldAlpha = viewAlphas[view] {
-      view.alpha = oldAlpha
+      if oldAlpha == .infinity {
+        view.alpha = 1
+        view.isOpaque = true
+      } else {
+        view.alpha = oldAlpha
+      }
       viewAlphas[view] = nil
     }
   }
   internal func unhideAll() {
-    for (view, oldAlpha) in viewAlphas {
-      view.alpha = oldAlpha
+    for view in viewAlphas.keys {
+      unhide(view: view)
     }
     viewAlphas.removeAll()
   }
