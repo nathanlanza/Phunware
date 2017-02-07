@@ -36,22 +36,18 @@ extension Reactive where Base: UICollectionView {
 
 class MainViewController: UIViewController {
   
-  var layout: UICollectionViewFlowLayout { return collectionView.collectionViewLayout as! UICollectionViewFlowLayout }
   @IBOutlet var collectionView: UICollectionView!
   let provider = RxMoyaProvider<Phunware>()
-  
-  func setupLayout() {
-    layout.itemSize = CGSize(width: view.frame.width, height: 120)
-  }
-  
   let things = Variable<[Thing]>([])
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupLayout()
+
     RxMoyaProvider<Phunware>().request(.starWars).mapJSON().map(Thing.from).subscribe(onNext: { self.things.value = $0 }).addDisposableTo(db)
-    collectionView!.backgroundColor = .white
+    collectionView.backgroundColor = .white
     view.backgroundColor = .white
+    
+    (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: view.frame.width, height: 120)
     
     setupRx()
   }
@@ -59,8 +55,7 @@ class MainViewController: UIViewController {
   func setupRx() {
     
     things.asObservable().bindTo(collectionView!.rx.items(cellType: ThingCell.self)) { index, thing, cell in
-      cell.configure(for: thing)
-      print("hi")
+      cell.thing = thing
       }.addDisposableTo(db)
 //    collectionView!.rx.itemSelected.subscribe(onNext: { indexPath in
 //      let thing = self.things.value[indexPath.row]
@@ -71,11 +66,19 @@ class MainViewController: UIViewController {
 //      self.show(dvc, sender: cell)
 //    }).addDisposableTo(db)
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let cell = sender as? ThingCell,
+      let vc = segue.destination as? DetailViewController {
+      vc.thing = cell.thing
+    }
+  }
+  
   let db = DisposeBag()
 }
 
 
-class DetailViewController: UIViewController {
+class DetailViewController2: UIViewController {
   var thing: Thing! {
     didSet {
       dateLabel.text = thing.date
@@ -152,25 +155,23 @@ class DetailViewController: UIViewController {
     isHeroEnabled = true
   }
   
+  
   required init?(coder aDecoder: NSCoder) { fatalError() }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class DetailViewController: UIViewController {
+  var thing: Thing!
+  
+  @IBOutlet weak var imageView: UIImageView!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    imageView.heroID = "imageView"
+  }
+}
 
 
 

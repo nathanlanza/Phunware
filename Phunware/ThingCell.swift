@@ -4,6 +4,18 @@ import Hero
 
 class ThingCell: UICollectionViewCell {
   
+  @IBOutlet weak var imageView: UIImageView!
+  
+  var thing: Thing! {
+    didSet {
+      imageView.af_setImage(withURL: URL(string: thing.image)!)
+    }
+  }
+
+}
+
+class ThingCell2: UICollectionViewCell {
+  
   let dateLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
