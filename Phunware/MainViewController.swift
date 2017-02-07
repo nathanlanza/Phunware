@@ -36,44 +36,53 @@ extension Reactive where Base: UICollectionView {
 
 class MainViewController: UIViewController {
   
-  @IBOutlet var collectionView: UICollectionView!
+  var collectionView: UICollectionView!
+  let layout = UICollectionViewFlowLayout()
+  
   let provider = RxMoyaProvider<Phunware>()
   let things = Variable<[Thing]>([])
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    RxMoyaProvider<Phunware>().request(.starWars).mapJSON().map(Thing.from).subscribe(onNext: { self.things.value = $0 }).addDisposableTo(db)
-    collectionView.backgroundColor = .white
     view.backgroundColor = .white
     
-    (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: view.frame.width, height: 120)
-    
+    setupCV()
+    setupLayout()
     setupRx()
   }
   
-  func setupRx() {
+  func setupCV() {
+    collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .white
+    view.addSubview(collectionView)
     
-    things.asObservable().bindTo(collectionView!.rx.items(cellType: ThingCell.self)) { index, thing, cell in
-      cell.thing = thing
-      }.addDisposableTo(db)
-//    collectionView!.rx.itemSelected.subscribe(onNext: { indexPath in
-//      let thing = self.things.value[indexPath.row]
-//      let dvc = DetailViewController()
-//      dvc.thing = thing
-//      let cell = self.collectionView?.cellForItem(at: indexPath) as! ThingCell
-//      dvc.imageView.image = cell.imageView.image
-//      self.show(dvc, sender: cell)
-//    }).addDisposableTo(db)
-  }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let cell = sender as? ThingCell,
-      let vc = segue.destination as? DetailViewController {
-      vc.thing = cell.thing
+    collectionView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
     }
+    
+    collectionView.register(ThingCell.self)
   }
   
+  func setupLayout() {
+    layout.itemSize = CGSize(width: view.frame.width, height: 120)
+  }
+  
+  func setupRx() {
+    RxMoyaProvider<Phunware>().request(.starWars).mapJSON().map(Thing.from).subscribe(onNext: { self.things.value = $0 }).addDisposableTo(db)
+    things.asObservable().bindTo(collectionView!.rx.items(cellType: ThingCell.self)) { index, thing, cell in
+      cell.configure(for: thing)
+      }.addDisposableTo(db)
+    collectionView!.rx.itemSelected.subscribe(onNext: { indexPath in
+      let thing = self.things.value[indexPath.row]
+      let dvc = DetailViewController()
+      dvc.thing = thing
+      let cell = self.collectionView?.cellForItem(at: indexPath) as! ThingCell
+      dvc.imageView.image = cell.imageView.image
+      self.show(dvc, sender: cell)
+    }).addDisposableTo(db)
+  }
+  
+
   let db = DisposeBag()
 }
 

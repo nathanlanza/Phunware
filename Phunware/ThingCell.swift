@@ -4,18 +4,6 @@ import Hero
 
 class ThingCell: UICollectionViewCell {
   
-  @IBOutlet weak var imageView: UIImageView!
-  
-  var thing: Thing! {
-    didSet {
-      imageView.af_setImage(withURL: URL(string: thing.image)!)
-    }
-  }
-
-}
-
-class ThingCell2: UICollectionViewCell {
-  
   let dateLabel: UILabel = {
     let l = UILabel()
     l.font = UIFont.systemFont(ofSize: 9)
@@ -58,8 +46,7 @@ class ThingCell2: UICollectionViewCell {
     super.init(frame: frame)
     backgroundColor = .white
     
-    [dateLabel,titleLabel,locationLabel,descriptionLabel,imageView].forEach { self.contentView.addSubview($0) }
-    
+    [dateLabel,titleLabel,locationLabel,descriptionLabel].forEach { self.contentView.addSubview($0) }     
 
     dateLabel.snp.makeConstraints { make in
       make.top.equalTo(dateLabel.superview!).offset(20)
