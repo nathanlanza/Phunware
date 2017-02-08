@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		802B260D143A3E1FD5376F87 /* Pods_Phunware.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B8341C229629282EFA0312 /* Pods_Phunware.framework */; };
+		B32324DC1E4A6E3B0034CD7A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32324DB1E4A6E3B0034CD7A /* DetailViewController.swift */; };
+		B32324DE1E4A77070034CD7A /* StretchingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32324DD1E4A77070034CD7A /* StretchingHeader.swift */; };
+		B32324E01E4A9C0D0034CD7A /* Reusable+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32324DF1E4A9C0D0034CD7A /* Reusable+Protocol.swift */; };
+		B32324E21E4A9C290034CD7A /* Reactive+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32324E11E4A9C290034CD7A /* Reactive+Reusable.swift */; };
+		B32324E51E4A9C9A0034CD7A /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32324E41E4A9C9A0034CD7A /* DetailCell.swift */; };
 		B35512121E494AF100BC0A0D /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512111E494AF100BC0A0D /* Thing.swift */; };
 		B35512141E49553300BC0A0D /* ThingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35512131E49553300BC0A0D /* ThingCell.swift */; };
 		B3DC65801E49374500970EAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DC657F1E49374500970EAC /* AppDelegate.swift */; };
@@ -20,6 +25,11 @@
 
 /* Begin PBXFileReference section */
 		7B1EC45E2EE0FA15A41F7D1E /* Pods-Phunware.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Phunware.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Phunware/Pods-Phunware.debug.xcconfig"; sourceTree = "<group>"; };
+		B32324DB1E4A6E3B0034CD7A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
+		B32324DD1E4A77070034CD7A /* StretchingHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StretchingHeader.swift; sourceTree = "<group>"; };
+		B32324DF1E4A9C0D0034CD7A /* Reusable+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reusable+Protocol.swift"; sourceTree = "<group>"; };
+		B32324E11E4A9C290034CD7A /* Reactive+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reactive+Reusable.swift"; sourceTree = "<group>"; };
+		B32324E41E4A9C9A0034CD7A /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		B35512111E494AF100BC0A0D /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		B35512131E49553300BC0A0D /* ThingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingCell.swift; sourceTree = "<group>"; };
 		B3DC657C1E49374500970EAC /* Phunware.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phunware.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +65,7 @@
 				F7B8341C229629282EFA0312 /* Pods_Phunware.framework */,
 			);
 			name = Frameworks;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		A8A10E4EC7EA690D193AA576 /* Frameworks */ = {
@@ -66,13 +77,48 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		B32324E31E4A9C7F0034CD7A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B3DC65811E49374500970EAC /* MainViewController.swift */,
+				B32324DB1E4A6E3B0034CD7A /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B32324E61E4A9CAF0034CD7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B35512131E49553300BC0A0D /* ThingCell.swift */,
+				B32324E41E4A9C9A0034CD7A /* DetailCell.swift */,
+				B32324DD1E4A77070034CD7A /* StretchingHeader.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B32324E71E4A9CB60034CD7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B35512111E494AF100BC0A0D /* Thing.swift */,
+				B3DC65921E4945D900970EAC /* Phunware.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B32324E81E4A9CBB0034CD7A /* Protocol & Other */ = {
+			isa = PBXGroup;
+			children = (
+				B32324E11E4A9C290034CD7A /* Reactive+Reusable.swift */,
+				B32324DF1E4A9C0D0034CD7A /* Reusable+Protocol.swift */,
+			);
+			name = "Protocol & Other";
+			sourceTree = "<group>";
+		};
 		B3DC65731E49374400970EAC = {
 			isa = PBXGroup;
 			children = (
 				B3DC657E1E49374500970EAC /* Phunware */,
 				B3DC65911E493C2E00970EAC /* Other */,
-				E42546E2D9250C8959510BE5 /* Pods */,
-				4E656E2090E4C8CAC9F6D2B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,10 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				B3DC657F1E49374500970EAC /* AppDelegate.swift */,
-				B3DC65811E49374500970EAC /* MainViewController.swift */,
-				B35512131E49553300BC0A0D /* ThingCell.swift */,
-				B35512111E494AF100BC0A0D /* Thing.swift */,
-				B3DC65921E4945D900970EAC /* Phunware.swift */,
+				B32324E81E4A9CBB0034CD7A /* Protocol & Other */,
+				B32324E31E4A9C7F0034CD7A /* Controllers */,
+				B32324E61E4A9CAF0034CD7A /* Views */,
+				B32324E71E4A9CB60034CD7A /* Model */,
 			);
 			path = Phunware;
 			sourceTree = "<group>";
@@ -100,6 +146,8 @@
 		B3DC65911E493C2E00970EAC /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				E42546E2D9250C8959510BE5 /* Pods */,
+				4E656E2090E4C8CAC9F6D2B8 /* Frameworks */,
 				B3DC657D1E49374500970EAC /* Products */,
 				B52CE211D22AE2025452DD15 /* Pods */,
 				A8A10E4EC7EA690D193AA576 /* Frameworks */,
@@ -128,6 +176,7 @@
 				FB1EB98DA19C098243D1235C /* Pods-Phunware.release.xcconfig */,
 			);
 			name = Pods;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,10 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B32324E51E4A9C9A0034CD7A /* DetailCell.swift in Sources */,
+				B32324DE1E4A77070034CD7A /* StretchingHeader.swift in Sources */,
 				B35512121E494AF100BC0A0D /* Thing.swift in Sources */,
+				B32324E01E4A9C0D0034CD7A /* Reusable+Protocol.swift in Sources */,
 				B3DC65821E49374500970EAC /* MainViewController.swift in Sources */,
 				B3DC65931E4945D900970EAC /* Phunware.swift in Sources */,
+				B32324DC1E4A6E3B0034CD7A /* DetailViewController.swift in Sources */,
 				B35512141E49553300BC0A0D /* ThingCell.swift in Sources */,
+				B32324E21E4A9C290034CD7A /* Reactive+Reusable.swift in Sources */,
 				B3DC65801E49374500970EAC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

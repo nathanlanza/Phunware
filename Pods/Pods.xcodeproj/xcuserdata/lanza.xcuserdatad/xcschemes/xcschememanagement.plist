@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GSKStretchyHeaderView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Hero.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>65826BC6522A483C7360D5A71AEE110F</key>
+		<key>63223C15742A94F948C4CD1120FDA86D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8E862E1BD8034BB2692ABD729E403952</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9B718C58907C22E03009A5703D5C847C</key>
+		<key>8D85B0579BFD4018B657EAF3363AA88C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -88,6 +88,16 @@
 			<true/>
 		</dict>
 		<key>CBC08580AE5A802626154E0BCABF642B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD71ED72EACA0156F0B96DDE230F2138</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA62DFF1C028480A828CEB2AF9EED28B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

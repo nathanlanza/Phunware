@@ -17,4 +17,6 @@ target 'Phunware' do
 
   pod 'Hero'
 
+  pod "GSKStretchyHeaderView"
+
 end

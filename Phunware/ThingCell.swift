@@ -6,34 +6,36 @@ class ThingCell: UICollectionViewCell {
   
   let dateLabel: UILabel = {
     let l = UILabel()
-    l.font = UIFont.systemFont(ofSize: 9)
-//    l.heroID = "date"
+    l.font = UIFont.systemFont(ofSize: 12)
+    l.heroModifiers = [.zPosition(3)]
     return l
   }()
   let titleLabel: UILabel = {
     let l = UILabel()
-    l.font = UIFont.systemFont(ofSize: 9)
-//    l.heroID = "title"
+    l.font = UIFont.systemFont(ofSize: 20)
+    //    l.heroID = "title"
+    l.heroModifiers = [.zPosition(3)]
     return l
   }()
   let locationLabel: UILabel = {
     let l = UILabel()
-    l.font = UIFont.systemFont(ofSize: 9)
-//    l.heroID = "location"
+    l.font = UIFont.systemFont(ofSize: 12)
+    //    l.heroID = "location"
     return l
   }()
   
   let descriptionLabel: UILabel = {
     let l = UILabel()
-    l.font = UIFont.systemFont(ofSize: 9)
+    l.font = UIFont.systemFont(ofSize: 15)
     l.numberOfLines = 0
-//    l.heroID = "description"
+    //    l.heroID = "description"
+    l.heroModifiers = [.zPosition(3)]
     return l
   }()
   
   let imageView: UIImageView = {
     let i = UIImageView()
-//    i.heroID = "image"
+    //    i.heroID = "image"
     return i
   }()
   
@@ -41,8 +43,8 @@ class ThingCell: UICollectionViewCell {
     super.init(frame: frame)
     backgroundColor = .white
     
-    [dateLabel,titleLabel,locationLabel,descriptionLabel].forEach { self.contentView.addSubview($0) }     
-
+    [dateLabel,titleLabel,locationLabel,descriptionLabel].forEach { self.contentView.addSubview($0) }
+    
     dateLabel.snp.makeConstraints { make in
       make.top.equalTo(dateLabel.superview!).offset(20)
       make.left.equalTo(dateLabel.superview!).offset(20)
@@ -61,13 +63,14 @@ class ThingCell: UICollectionViewCell {
       make.bottom.equalTo(descriptionLabel.superview!).offset(-20)
       make.right.equalTo(descriptionLabel.superview!).offset(-20)
     }
-
+    
     backgroundView = imageView
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
   
   func configure(for thing: Thing) {
+    
     dateLabel.text = thing.date
     titleLabel.text = thing.title
     locationLabel.text = "\(thing.locationline2), \(thing.locationline1)"
